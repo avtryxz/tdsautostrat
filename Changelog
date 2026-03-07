@@ -1,0 +1,24 @@
+# Changelog
+
+## [1.1.1] - 2026-03-11
+### Fixed
+- Fixed the recorder spamming duplicate ability logs
+    - The recorder will no longer log abilities that are already handled by Auto-UI toggles (DJ Booth, Commander, Necromancer).
+
+## [1.1.0] - 2026-03-07
+### Added
+- Initial project files
+- Medic logic and elevate Recorder hook thread identity
+    - The recorder will now correctly log every ability (Medic, Mercenary base, DJ etc.)
+- Trial elevator teleport
+    - The library now actually teleports to the Trial elevator when calling TDS:Mode("Trial") function
+- Trial and Special detection
+    - The recorder skips TDS:GameInfo() if Special or Trial mode is detected
+
+### Fixed
+- UnlockSpeedTickets crash when the TimeScale UI option is pre-enabled
+	- TDS:UnlockTimeScale() will no longer cause an error if Timescale is pre-enabled in the UI
+
+### Changed
+- Updated loadstrings to local repo
+- Removed npc:Destroy() logic in AntiLag to prevent lag issues
