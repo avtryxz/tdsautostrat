@@ -3432,11 +3432,6 @@ local function StartAntiLag()
                     unit:Destroy()
                 end
             end
-            if enemies then
-                for _, npc in ipairs(enemies:GetChildren()) do
-                    npc:Destroy()
-                end
-            end
             task.wait(0.5)
         end
         AntiLagRunning = false
