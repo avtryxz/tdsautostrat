@@ -918,7 +918,7 @@ end
 CurrentEquippedTowers = GetEquippedTowers()
 
 -- // ui
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/DuxiiT/auto-strat/refs/heads/main/Sources/UI.lua"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/avtryxz/tdsautostrat/refs/heads/main/Sources/UI.lua"))()
 
 local Window = Library:Window({
     Title = "Aether Hub",
@@ -1946,7 +1946,7 @@ end
 
 Window:Line()
 
-local RecorderInit = loadstring(game:HttpGet("https://raw.githubusercontent.com/DuxiiT/auto-strat/refs/heads/main/Sources/Recorder.lua"))()
+local RecorderInit = loadstring(game:HttpGet("https://raw.githubusercontent.com/avtryxz/tdsautostrat/refs/heads/main/Sources/Recorder.lua"))()
 RecorderInit({
     Window = Window,
     ReplicatedStorage = ReplicatedStorage,

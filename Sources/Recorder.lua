@@ -720,7 +720,7 @@ return function(ctx)
 
                 if writefile then 
                     local config_header = string.format([[
-local TDS = loadstring(game:HttpGet("https://raw.githubusercontent.com/DuxiiT/auto-strat/refs/heads/main/Library.lua"))()
+local TDS = loadstring(game:HttpGet("https://raw.githubusercontent.com/avtryxz/tdsautostrat/refs/heads/main/Library.lua"))()
 
 TDS:Loadout("%s", "%s", "%s", "%s", "%s")
 TDS:Mode("%s")
