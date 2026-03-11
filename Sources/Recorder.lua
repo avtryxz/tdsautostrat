@@ -416,7 +416,7 @@ return function(ctx)
         record_line(cmd, "Unequipped: " .. tower_name)
     end
 
-    local function handle_namecall(remote, method, args)
+    local function handle_namecall(remote, method, args, results)
         if not Globals.record_strat then
             return
         end
@@ -434,6 +434,17 @@ return function(ctx)
         local a5 = args[5]
 
         if a1 == "Troops" and a2 == "Abilities" and a3 == "Activate" then
+            if type(a4) == "table" and type(a4.Name) == "string" then
+                local abilityName = a4.Name
+                if abilityName == "Call Of Arms" or abilityName == "Support Caravan" or abilityName == "Drop The Beat" or abilityName == "Raise The Dead" then
+                    return
+                end
+            end
+            
+            if not results or results[1] ~= true then
+                return
+            end
+            
             if type(a4) == "table" then
                 local idx = resolve_tower_index(a4.Troop)
                 local name = a4.Name
@@ -619,8 +630,8 @@ return function(ctx)
         })
 
         if has_hook then
-            Globals.__tds_recorder_handler = function(remote, method, args)
-                handle_namecall(remote, method, args)
+            Globals.__tds_recorder_handler = function(remote, method, args, results)
+                handle_namecall(remote, method, args, results)
             end
 
             if not Globals.__tds_recorder_hooked then
@@ -635,7 +646,7 @@ return function(ctx)
                         task.spawn(function()
                             local set_id = setthreadidentity or setidentity or setthreadcontext
                             if set_id then set_id(7) end
-                            pcall(handler, self, method, args)
+                            pcall(handler, self, method, args, results)
                         end)
                     end
                     return table.unpack(results, 1, results.n)
