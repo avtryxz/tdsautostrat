@@ -1155,6 +1155,7 @@ local Main = Window:Tab({Title = "Main", Icon = "stamp"}) do
         Value = false,
         Callback = function(v)
             StackEnabled = v
+            Globals.StackEnabled = v
 
             if StackEnabled then
                 Window:Notify({
@@ -3048,7 +3049,7 @@ function TDS:Place(TName, px, py, pz, ...)
     local stack = false
 
     if args[#args] == "stack" or args[#args] == true then
-        py = py+20
+        py = py+25
     end
     if GameState ~= "GAME" then
         return false 
