@@ -801,7 +801,13 @@ TDS:Mode("%s")%s
                     pos_x, pos_y, pos_z = p.X, p.Y, p.Z
                 end
                 
-                local command = 'TDS:Place("' .. tower_name .. '", ' .. tostring(pos_x) .. ', ' .. tostring(pos_y) .. ', ' .. tostring(pos_z) .. ')'
+                local command
+                if Globals.StackEnabled then
+                    local base_y = pos_y - 25
+                    command = 'TDS:Place("' .. tower_name .. '", ' .. tostring(pos_x) .. ', ' .. tostring(base_y) .. ', ' .. tostring(pos_z) .. ', true)'
+                else
+                    command = 'TDS:Place("' .. tower_name .. '", ' .. tostring(pos_x) .. ', ' .. tostring(pos_y) .. ', ' .. tostring(pos_z) .. ')'
+                end
                 record_action(command)
                 Recorder:Log("Placed " .. tower_name .. " (Index: " .. my_index .. ")")
 
