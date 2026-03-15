@@ -786,6 +786,8 @@ TDS:Mode("%s")%s
                 local owner_id = replicator:GetAttribute("OwnerId")
                 if owner_id and owner_id ~= local_player.UserId then return end
 
+                if replicator:GetAttribute("Hologram") == true then return end
+
                 tower_count = tower_count + 1
                 local my_index = tower_count
                 spawned_towers[tower] = my_index
